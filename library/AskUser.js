@@ -50,11 +50,20 @@ AskUser.prototype.initializeQuestions = function () {
                     name: 'officeNumber',
                     message: "Enter manager's office number"
 
+                },
+                {
+                    type: 'confirm',
+                    name: 'teamMemberAsk',
+                    message: 'Add another team member?',
+                    default: true,
                 }
                 ])
                 .then((managerInfo) => {
                     const manager = new Manager(info.name, info.email, info.position, info.employeeId, managerInfo.officeNumber)
                     console.log(manager);
+                    if (managerInfo.teamMemberAsk === true) {
+                        new AskUser().initializeQuestions();
+                    }
                 })
           
             }
@@ -84,11 +93,49 @@ AskUser.prototype.initializeQuestions = function () {
                                             name: "gitHubInfo",
                                             message: "Please enter team member's GitHub username"
                                         })
+                                        
                                         .then((engineerInfo3) => {
                                             const engineer = new Engineer(info.name, info.email, info.position, info.employeeId, engineerInfo3.gitHubInfo)
                                             console.log(engineer);
+                                            inquirer.prompt({
+                                                
+                                                type: 'confirm',
+                                                name: 'teamMemberAsk2',
+                                                message: 'Add another team member?',
+                                                default: true,
+
+                                            })
+                                            .then((engineerInfo4) => {
+                                                if (engineerInfo4.teamMemberAsk2 === true) {
+
+                                                    new AskUser().initializeQuestions();
+                                                }
+
+                                            })
 
                                         })
+                                    }
+
+                                    else {
+                                        
+                                        const engineer = new Engineer(info.name, info.email, info.position, info.employeeId)
+                                        console.log(engineer);
+                                        inquirer.prompt({
+                                                
+                                            type: 'confirm',
+                                            name: 'teamMemberAsk2',
+                                            message: 'Add another team member?',
+                                            default: true,
+
+                                            })
+                                            .then((engineerInfo4) => {
+                                                if (engineerInfo4.teamMemberAsk2 === true) {
+
+                                                    new AskUser().initializeQuestions();
+                                                }
+
+                                            })
+
                                     }
                                 })
                         }
@@ -110,9 +157,26 @@ AskUser.prototype.initializeQuestions = function () {
                                             name: 'school',
                                             message: "What school does your intern attend?"
                                         })
+                                       
+                                        
                                         .then((internInfo2) => {
                                             const intern = new Intern(info.name, info.email, info.position, info.employeeId, internInfo2.school)
                                             console.log(intern)
+                                            inquirer.prompt({
+                                                
+                                                type: 'confirm',
+                                                name: 'teamMemberAsk3',
+                                                message: 'Add another team member?',
+                                                default: true,
+
+                                            })
+                                            .then((internInfo3) => {
+                                                if (internInfo2.teamMemberAsk3 === true) {
+
+                                                    new AskUser().initializeQuestions();
+                                                }
+
+                                            })
                                         })
 
                                     }
@@ -128,22 +192,5 @@ AskUser.prototype.initializeQuestions = function () {
 
         })
 };
-
-function addTeamMember() {
-    inquirer.prompt({
-        type: "confirm",
-        name: "newTeamMember",
-        message: "Add another team member?",
-        default: true,
-    })
-    .then((addYes) => {
-        if (newTeamMember === true) {
-            AskUser()
-        }
-        else {
-            
-        }
-    })
-}
 
 module.exports = AskUser;
