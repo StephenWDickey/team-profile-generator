@@ -1,9 +1,11 @@
 class Employee {
-    constructor(name='', email, position) {
-        this.name = name;
-        this.email = email;
-        this.position = position;
+    constructor(info) {
+        this.employee = info;
+      
     }
 };
 
+
+
 module.exports = Employee;
+

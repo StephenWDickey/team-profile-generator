@@ -1,14 +1,19 @@
 
 const Employee = require('../library/Employee.js');
+const AskUser = require('../library/AskUser.js');
 
 // jest.mock('../library/Employee.js');
 
 test('employee object is created', () => {
 
-    const employee = new Employee('Stephen Dickey', 'StephenDickey@programmer.com', 'Developer');
+    const employee = new Employee();
 
-    expect(employee.name).toBe('Stephen Dickey');
-    expect(employee.email).toBe('StephenDickey@programmer.com');
-    expect(employee.position).toBe('Developer');
+    expect(employee.employee).toBe(AskUser.employee);
+    
 
+});
+
+test('employee info populates from inquirer input', () => {
+    const employee = new Employee();
+    expect(employee.employee).toBe(AskUser.employee);
 });
