@@ -3,8 +3,10 @@ const inquirer = require('inquirer');
 const Manager = require('../library/Manager.js');
 
 const Employee = require('../library/Employee.js');
+
 const Engineer = require('./Engineer.js');
 
+const Intern = require('../library/Intern.js');
 
 function AskUser() {
     this.employee;
@@ -92,18 +94,31 @@ AskUser.prototype.initializeQuestions = function () {
                         }
                         else {
                             inquirer
-                                .prompt([
+                                .prompt(
                                 {
                                     type: 'confirm',
-                                    name: 'engineerAsk',
+                                    name: 'internAsk',
                                     message: 'Is this team member an intern?',
                                     default: true,
 
-                                },
-                                {
-                                    
-                                }
-                                ])
+                                })
+                                .then((internInfo) => {
+
+                                    if (internInfo.internAsk === true) {
+                                        inquirer.prompt({
+                                            type: 'input',
+                                            name: 'school',
+                                            message: "What school does your intern attend?"
+                                        })
+                                        .then((internInfo2) => {
+                                            const intern = new Intern(info.name, info.email, info.position, info.employeeId, internInfo2.school)
+                                            console.log(intern)
+                                        })
+
+                                    }
+                                
+                                })
+
                         }
 
                     })
