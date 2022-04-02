@@ -90,11 +90,27 @@ AskUser.prototype.initializeQuestions = function () {
                                     }
                                 })
                         }
+                        else {
+                            inquirer
+                                .prompt([
+                                {
+                                    type: 'confirm',
+                                    name: 'engineerAsk',
+                                    message: 'Is this team member an intern?',
+                                    default: true,
+
+                                },
+                                {
+                                    
+                                }
+                                ])
+                        }
 
                     })
                 
                 
             }
+
         })
 };
 
