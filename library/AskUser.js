@@ -33,7 +33,7 @@ AskUser.prototype.initializeQuestions = function () {
         }
         ])
         .then((info) => {
-            this.employee = new Employee(info);
+            
             if (info.gitHubAsk === true) {
                 inquirer.prompt({
                     type: 'text',
@@ -41,16 +41,16 @@ AskUser.prototype.initializeQuestions = function () {
                     message: "Please enter team member's GitHub username"
                 })
                 .then((info2) => {
-                    Employee.gitHub = info2;
-                    console.log(this.employee);
-                    console.log(Employee.gitHub);
+                    const employee = new Employee(info.name, info.email, info.position, info2.gitHubInfo)
+                    console.log(employee);
                     
                 })
             }
 
             else {
-                this.employee = new Employee(info);
-                console.log(this.employee);
+                const employee = new Employee(info.name, info.email, info.position);
+                
+                console.log(employee);
             }
         })
 };
