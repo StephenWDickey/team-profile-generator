@@ -8,6 +8,8 @@ const Engineer = require('./Engineer.js');
 
 const Intern = require('../library/Intern.js');
 
+const team = [];
+
 function AskUser() {
     this.employee;
     
@@ -60,6 +62,9 @@ AskUser.prototype.initializeQuestions = function () {
                 ])
                 .then((managerInfo) => {
                     const manager = new Manager(info.name, info.email, info.position, info.employeeId, managerInfo.officeNumber)
+
+                    team.push(manager);
+
                     console.log(manager);
                     if (managerInfo.teamMemberAsk === true) {
                         new AskUser().initializeQuestions();
@@ -106,6 +111,9 @@ AskUser.prototype.initializeQuestions = function () {
 
                                             })
                                             .then((engineerInfo4) => {
+
+                                                team.push(engineer);
+
                                                 if (engineerInfo4.teamMemberAsk2 === true) {
 
                                                     new AskUser().initializeQuestions();
@@ -129,6 +137,9 @@ AskUser.prototype.initializeQuestions = function () {
 
                                             })
                                             .then((engineerInfo4) => {
+
+                                                team.push(engineer);
+
                                                 if (engineerInfo4.teamMemberAsk2 === true) {
 
                                                     new AskUser().initializeQuestions();
@@ -161,6 +172,7 @@ AskUser.prototype.initializeQuestions = function () {
                                         
                                         .then((internInfo2) => {
                                             const intern = new Intern(info.name, info.email, info.position, info.employeeId, internInfo2.school)
+                                            team.push(intern);
                                             console.log(intern)
                                             inquirer.prompt({
                                                 
