@@ -10,6 +10,22 @@ class Employee {
         return this.name;
     }
 
+    getEmail() {
+        return this.email;
+    }
+
+    getPosition() {
+        return this.position;
+    }
+
+    getId() {
+        return this.employeeId;
+    }
+
+    getRole() {
+        return "Employee";
+    }
+
     
 };
 

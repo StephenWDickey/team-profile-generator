@@ -15,10 +15,7 @@ const htmlGenerate = require('../library/htmlGenerate.js');
 // we will store team member data here!
 let team = [];
 
-function AskUser() {
-    this.employee;
-    
-};
+function AskUser() {};
 
 
 

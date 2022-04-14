@@ -3,9 +3,9 @@ const AskUser = require('../library/AskUser.js');
 
 test('Engineer object is created', () => {
 
-    const employee = new Engineer();
+    const engineer = new Engineer("Steve", "engineer@gmail.com", "Developer", 2, "SoftwareDeveloper@github.com");
 
-    expect(employee.name).toBe(AskUser.employee);
+    expect(engineer.position).toBe("Developer");
     
 
 });

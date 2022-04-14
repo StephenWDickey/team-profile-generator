@@ -6,14 +6,10 @@ const AskUser = require('../library/AskUser.js');
 
 test('employee object is created', () => {
 
-    const employee = new Employee();
+    const employee = new Employee("Steve", "stephendickey@gmail.com", "Employee", 0);
 
-    expect(employee.employee).toBe(AskUser.employee);
+    expect(employee.position).toBe("Employee");
     
 
 });
 
-test('employee info populates from inquirer input', () => {
-    const employee = new Employee();
-    expect(employee.employee).toBe(AskUser.employee);
-});

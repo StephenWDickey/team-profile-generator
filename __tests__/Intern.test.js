@@ -3,9 +3,10 @@ const AskUser = require('../library/AskUser.js');
 
 test('Intern object is created', () => {
 
-    const employee = new Intern();
+    
+    const intern = new Intern("Steve", "student@gmail.com", "Intern", 3, "UCB coding bootcamp");
 
-    expect(employee.name).toBe(AskUser.employee);
+    expect(intern.position).toBe("Intern");
     
 
 });
