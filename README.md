@@ -1,7 +1,7 @@
 # team-profile-generator
 
 ![Image of a generated html page](./assets/team-profile-example.png)
-![recording of application function](./assets/team-profile-generator.mp4)
+![recording of application function](./assets/team-profile-generator.gif)
 
 
 ## Description 
