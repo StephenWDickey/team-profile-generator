@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
 
+const fs = require('fs');
+
 const Manager = require('../library/Manager.js');
 
 const Employee = require('../library/Employee.js');
@@ -8,12 +10,18 @@ const Engineer = require('./Engineer.js');
 
 const Intern = require('../library/Intern.js');
 
-const team = [];
+const htmlGenerate = require('../library/htmlGenerate.js');
+
+// we will store team member data here!
+let team = [];
 
 function AskUser() {
     this.employee;
     
 };
+
+
+
 
 AskUser.prototype.initializeQuestions = function () { 
     inquirer
@@ -65,9 +73,14 @@ AskUser.prototype.initializeQuestions = function () {
 
                     team.push(manager);
 
-                    console.log(manager);
+
                     if (managerInfo.teamMemberAsk === true) {
                         new AskUser().initializeQuestions();
+                    }
+
+                    else {
+                        
+                        addEmployees();
                     }
                 })
           
@@ -101,7 +114,7 @@ AskUser.prototype.initializeQuestions = function () {
                                         
                                         .then((engineerInfo3) => {
                                             const engineer = new Engineer(info.name, info.email, info.position, info.employeeId, engineerInfo3.gitHubInfo)
-                                            console.log(engineer);
+                                            
                                             inquirer.prompt({
                                                 
                                                 type: 'confirm',
@@ -119,6 +132,11 @@ AskUser.prototype.initializeQuestions = function () {
                                                     new AskUser().initializeQuestions();
                                                 }
 
+                                                else {
+                                                    
+                                                    addEmployees();
+                                                }
+
                                             })
 
                                         })
@@ -127,7 +145,7 @@ AskUser.prototype.initializeQuestions = function () {
                                     else {
                                         
                                         const engineer = new Engineer(info.name, info.email, info.position, info.employeeId)
-                                        console.log(engineer);
+                                        
                                         inquirer.prompt({
                                                 
                                             type: 'confirm',
@@ -143,6 +161,10 @@ AskUser.prototype.initializeQuestions = function () {
                                                 if (engineerInfo4.teamMemberAsk2 === true) {
 
                                                     new AskUser().initializeQuestions();
+                                                }
+
+                                                else {
+                                                    addEmployees();
                                                 }
 
                                             })
@@ -173,7 +195,7 @@ AskUser.prototype.initializeQuestions = function () {
                                         .then((internInfo2) => {
                                             const intern = new Intern(info.name, info.email, info.position, info.employeeId, internInfo2.school)
                                             team.push(intern);
-                                            console.log(intern)
+                                            
                                             inquirer.prompt({
                                                 
                                                 type: 'confirm',
@@ -186,6 +208,11 @@ AskUser.prototype.initializeQuestions = function () {
                                                 if (internInfo2.teamMemberAsk3 === true) {
 
                                                     new AskUser().initializeQuestions();
+                                                }
+
+                                                else {
+                                                    
+                                                    addEmployees();
                                                 }
 
                                             })
@@ -203,6 +230,24 @@ AskUser.prototype.initializeQuestions = function () {
             }
 
         })
+};
+
+function addEmployees() {
+
+    fs.writeFile("dist/index.html", htmlGenerate(team), (err) => {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            console.log('File saved');
+            
+            console.log(team);
+
+            console.log(team[0].name);
+        
+        }
+    })
+    
 };
 
 module.exports = AskUser;

@@ -3,3 +3,8 @@ module.exports = function () {
     this.email = "StephenDickey@programmer.com";
     this.position = "Developer";
 }
+
+
+getName() {
+    return this.name;
+}

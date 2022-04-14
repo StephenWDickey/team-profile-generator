@@ -5,6 +5,12 @@ class Employee {
         this.position = position;
         this.employeeId = employeeId;
     }
+
+    getName() {
+        return this.name;
+    }
+
+    
 };
 
 

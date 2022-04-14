@@ -10,6 +10,11 @@ class Manager extends Employee {
         this.employeeId = employeeId;
         this.officeNumber = officeNumber;
     }
+
+    getRole() {
+        return "Manager";
+    }
+
 };
 
 module.exports = Manager;
