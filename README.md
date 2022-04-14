@@ -1,7 +1,8 @@
 # team-profile-generator
 
-![recording of application function](./assets/Module9applicationrecording.gif)
-![recording of a generated html page](./assets/Module9generatedreadme.gif)
+![Image of a generated html page](./assets/team-profile-example.png)
+![recording of application function](./assets/team-profile-generator.mp4)
+
 
 ## Description 
 
